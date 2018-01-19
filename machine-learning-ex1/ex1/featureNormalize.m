@@ -9,6 +9,7 @@ function [X_norm, mu, sigma] = featureNormalize(X)
 X_norm = X;
 mu = zeros(1, size(X, 2));
 sigma = zeros(1, size(X, 2));
+features = size(X,2);
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: First, for each feature dimension, compute the mean
@@ -25,6 +26,21 @@ sigma = zeros(1, size(X, 2));
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
+
+%Now the code will loop through any number of features and will 
+%update matrix for all of them.
+
+for i = 1:features
+	mu(:,i) = mean(X(:,i));
+	X_norm(:,i) = X(:,1) - mean(X(:,i));
+	sigma(:,i) = std(X(:,i));
+	X_norm(:,i) = X_norm(:,i)./std(X(:,i));
+end
+
+
+%we only divide standard 
+%deviation after subtracting mean, 
+%i.e why we have divide here from X_norm
 
 
 
