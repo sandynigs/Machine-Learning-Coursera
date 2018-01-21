@@ -56,7 +56,7 @@ theta = zeros(2, 1); % initialize fitting parameters
 
 % Some gradient descent settings
 iterations = 1500;
-alpha = 0.01;
+alpha = 0.001;
 
 fprintf('\nTesting the cost function ...\n')
 % compute and display initial cost
@@ -74,13 +74,15 @@ pause;
 
 fprintf('\nRunning Gradient Descent ...\n')
 % run gradient descent
-theta = gradientDescent(X, y, theta, alpha, iterations);
-
+%theta = gradientDescent(X, y, theta, alpha, iterations);
+[theta, J_history] = gradientDescent(X, y, theta, alpha, iterations);
 % print theta to screen
 fprintf('Theta found by gradient descent:\n');
 fprintf('%f\n', theta);
 fprintf('Expected theta values (approx)\n');
 fprintf(' -3.6303\n  1.1664\n\n');
+%fprintf('J found by gradient descent:\n');
+%fprintf('%f\n', J_history);
 
 % Plot the linear fit
 hold on; % keep previous plot visible

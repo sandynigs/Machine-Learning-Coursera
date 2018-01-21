@@ -29,13 +29,10 @@ features = size(X,2);
 
 %Now the code will loop through any number of features and will 
 %update matrix for all of them.
-
-for i = 1:features
-	mu(:,i) = mean(X(:,i));
-	X_norm(:,i) = X(:,1) - mean(X(:,i));
-	sigma(:,i) = std(X(:,i));
-	X_norm(:,i) = X_norm(:,i)./std(X(:,i));
-end
+mu = mean(X_norm);
+sigma = std(X_norm);
+X_norm = X_norm-mu;
+X_norm = X_norm./sigma;
 
 
 %we only divide standard 
